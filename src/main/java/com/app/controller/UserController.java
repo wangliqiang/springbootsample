@@ -5,21 +5,24 @@ import com.app.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * Created by 王立强 on 2017/5/19.
  */
 @RestController
+@EnableAutoConfiguration
 public class UserController {
 
     final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
+    @Resource
     private UserService userService;
 
     /**

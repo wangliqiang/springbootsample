@@ -14,7 +14,7 @@ import java.util.List;
 @Service("userService")
 public class UserService {
 
-    @Resource
+    @Autowired
     public UserMapper userMapper;
 
     public List<Users> getAllUserInfo() {

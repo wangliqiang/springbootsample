@@ -22,7 +22,7 @@ public class UserController {
 
     final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @Resource
+    @Autowired
     private UserService userService;
 
     /**

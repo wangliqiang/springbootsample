@@ -33,4 +33,9 @@ public class UserController {
     public List<Users> getAllUserInfo() {
         return (userService.getAllUserInfo());
     }
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String getString(){
+        return "Hello SpringBoot";
+    }
 }

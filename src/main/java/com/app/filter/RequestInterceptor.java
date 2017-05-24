@@ -14,15 +14,25 @@ import java.lang.reflect.Method;
  */
 public class RequestInterceptor implements HandlerInterceptor {
 
+
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        boolean flag =true;
+        boolean flag = true;
         String ip = httpServletRequest.getRemoteAddr();
         long startTime = System.currentTimeMillis();
+
+        //允许跨域请求
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+        //允许的访问方法
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
+        //Access-Control-Max-Age 用于 CORS 相关配置的缓存
+        httpServletResponse.setHeader("Access-Control-Max-Age", "3600");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         httpServletRequest.setAttribute("requestStartTime", startTime);
+
         HandlerMethod handlerMethod = (HandlerMethod) o;
         Method method = handlerMethod.getMethod();
-        System.out.println("用户:"+ip+",访问目标:"+method.getDeclaringClass().getName() + "." + method.getName());
+        System.out.println("用户:" + ip + ",访问目标:" + method.getDeclaringClass().getName() + "." + method.getName());
 
 //        Users user=(Users)httpServletRequest.getSession().getAttribute("user");
 //        if(null==user){

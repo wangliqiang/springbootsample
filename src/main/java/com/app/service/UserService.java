@@ -1,6 +1,6 @@
 package com.app.service;
 
-import com.app.bean.Users;
+import com.app.common.PageData;
 import com.app.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,11 @@ public class UserService {
     @Autowired
     public UserMapper userMapper;
 
-    public List<Users> getAllUserInfo() {
-        return userMapper.getAllUserInfo();
+    public List<PageData> listAll(){
+        return userMapper.listAll();
+    }
+
+    public PageData findOne(String id){
+        return userMapper.findOne(id);
     }
 }

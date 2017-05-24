@@ -1,10 +1,7 @@
 package com.app.mapper;
 
-import com.app.bean.Users;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import com.app.common.PageData;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,7 +12,10 @@ import java.util.List;
 public interface UserMapper {
 
     @Select(value = {"select * from user"})
-    @Results({@Result(column = "username", property = "username"), @Result(column = "age", property = "age")})
-    List<Users> getAllUserInfo();
+    List<PageData> listAll();
+
+
+    @Select(value = {"select * from user where id = #{id}"})
+    PageData findOne(@Param("id") String id);
 
 }

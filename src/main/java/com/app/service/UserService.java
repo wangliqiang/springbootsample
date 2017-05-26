@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by 王立强 on 2017/5/19.
  */
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Service("userService")
 public class UserService {
 
